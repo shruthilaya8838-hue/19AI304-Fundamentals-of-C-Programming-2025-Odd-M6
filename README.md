@@ -219,7 +219,11 @@ int main()
 # Output:
 
 Employee(s) with highest salary:
+
+
 Emp No: 102  Name: Anita  Salary: 30000.00
+
+
 Emp No: 103  Name: Kiran  Salary: 30000.00
 
 # Result: 
@@ -351,6 +355,8 @@ int main() {
 # Output:
 
 Integer value: 65
+
+
 Character value: A
 
 # Result: 
