@@ -8,7 +8,7 @@
 | Input | Output                                       |
 |-------|----------------------------------------------|
 | 1     | 101.25&nbsp;&nbsp;201.50&nbsp;&nbsp;301.75&nbsp;&nbsp;402.00&nbsp;&nbsp;502.75 |
-# Date : 
+# Date : 31-12-2025
 # Aim:
 To develop a C program using the static storage class in a function with a parameter and without a return value to display the required output.
 # Algorithm:
@@ -33,7 +33,35 @@ To develop a C program using the static storage class in a function with a param
 ### Step 8:
   Stop
 # Program:
+
+#include <stdio.h>
+
+void display(int n)
+{
+    static float x = 1.25;
+    int i;
+
+    for (i = 1; i <= 5; i++)
+    {
+        printf("%.2f ", i * 100 + x);
+        x += 0.25;
+    }
+}
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    if (n == 1)
+        display(n);
+    return 0;
+}
+
 # Output:
+Input : 1
+
+Output : 101.25 201.50 301.75 402.00 502.75
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -42,7 +70,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # IAPR-6- Module 6 - FoC
 # Ex.No:27
   Implement a C program to perform arithmetic operations (addition, subtraction, multiplication, division) on two integers using function pointers. The user should input two numbers and select the desired operation from a menu.
-# Date : 
+# Date : 31-12=2025
 # Aim:
   To implement a C program that uses function pointers to perform arithmetic operations (add, subtract, multiply, divide) on two integers based on user choice.
 # Algorithm:
@@ -79,7 +107,35 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11:
   Stop
 # Program:
+
+#include <stdio.h>
+
+int add(int a,int b){return a+b;}
+int sub(int a,int b){return a-b;}
+int mul(int a,int b){return a*b;}
+int div(int a,int b){return a/b;}
+
+int main()
+{
+    int x,y,c;
+    int (*fp)(int,int);
+
+    scanf("%d %d",&x,&y);
+    scanf("%d",&c);
+
+    if(c==1) fp=add;
+    else if(c==2) fp=sub;
+    else if(c==3) fp=mul;
+    else fp=div;
+
+    printf("%d",fp(x,y));
+    return 0;
+}
+
 # Output:
+
+15
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -87,7 +143,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # IAPR-6- Module 6 - FoC
 # Ex.No:28
   Develop a C program to store details of n employees (employee number, name, and salary) using structures, and display the employee(s) with the highest salary.
-# Date : 
+# Date : 31-12-2025
 # Aim:
   To develop and implement a C program that uses a structure to store employee details (employee number, name, and salary) and determine the employee(s) with the highest salary.
 # Algorithm:
@@ -123,7 +179,49 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10:
   Stop
 # Program:
+#include <stdio.h>
+
+struct employee
+{
+    int eno;
+    char name[30];
+    float salary;
+};
+
+int main()
+{
+    int n, i;
+    float max;
+    struct employee e[50];
+
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+       
+        scanf("%d %s %f", &e[i].eno, e[i].name, &e[i].salary);
+    }
+
+    max = e[0].salary;
+    for (i = 1; i < n; i++)
+        if (e[i].salary > max)
+            max = e[i].salary;
+
+    printf("\nEmployee(s) with highest salary:\n");
+    for (i = 0; i < n; i++)
+        if (e[i].salary == max)
+            printf("Emp No: %d  Name: %s  Salary: %.2f\n",
+                   e[i].eno, e[i].name, e[i].salary);
+
+    return 0;
+}
+
 # Output:
+
+Employee(s) with highest salary:
+Emp No: 102  Name: Anita  Salary: 30000.00
+Emp No: 103  Name: Kiran  Salary: 30000.00
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -132,7 +230,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # IAPR-6- Module 6 - FoC
 # Ex.No:29
   Create the C program to calculate the present age of a person by passing structure as a reference.
-# Date : 
+# Date : 31-12-2025
 # Aim:
   To create a C program that uses a structure to store the current date and birth date, and to calculate the person’s present age in years, months, and days by passing the structure as a reference.
 # Algorithm:
@@ -166,7 +264,35 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 9:
   Stop
 # Program:
+#include <stdio.h>
+
+struct dob
+{
+    int day, month, year;
+};
+
+void calculateAge(struct dob *d, int cy)
+{
+    printf("Present Age = %d years", cy - d->year);
+}
+
+int main()
+{
+    struct dob d;
+    int currentYear;
+
+    scanf("%d %d %d", &d.day, &d.month, &d.year);
+
+    scanf("%d", &currentYear);
+
+    calculateAge(&d, currentYear);
+    return 0;
+}
+
 # Output:
+
+Present Age = 22 years
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -175,7 +301,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # IAPR-6- Module 6 - FoC
 # Ex.No:30
   Build a C program to demonstrate the use of a pointer to a union. Store an integer value in a union, access it using a union pointer, and display it as both an integer and a character.
-# Date : 
+# Date :31-12-2025 
 # Aim:
   To build a program in C that uses a pointer to a union to store an integer value and display it in both integer and character format.
 # Algorithm:
@@ -202,7 +328,31 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10:
   Stop
 # Program:
+
+#include <stdio.h>
+
+union Data {
+    int i;
+    char c;
+};
+
+int main() {
+    union Data d;
+    union Data *ptr = &d;
+
+    ptr->i = 65;
+
+    printf("Integer value: %d\n", ptr->i);
+    printf("Character value: %c\n", ptr->c);
+
+    return 0;
+}
+
 # Output:
+
+Integer value: 65
+Character value: A
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
